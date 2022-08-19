@@ -2,6 +2,14 @@
 
 Library for convenient use of the bestchange api.
 
+## Install
+
+Add the following line to your Cargo.toml file:
+
+```
+bestchange_api = "0.0.1"
+```
+
 ## Example
 
 ```rust,no_run
