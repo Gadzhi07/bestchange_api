@@ -7,6 +7,7 @@ description = "Library for convenient use of the bestchange api."
 keywords = ["api", "bestchange"]
 authors = ["Gadzhi07"]
 readme = "README.md"
+repository = "https://github.com/Gadzhi07/bestchange_api"
 
 [lib]
 name = "bestchange_api"
