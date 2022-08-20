@@ -22,18 +22,17 @@ fn main() {
     let rates = bestchange_api::Rate::load();
     let exchangers = bestchange_api::Exchanger::load();
     let currencies = bestchange_api::Currency::load();
-
     let currencies_codes = bestchange_api::CurrencyCode::load();
     
     let city_for_id = bestchange_api::City::get_by_id(&cities, 111_u16).unwrap();
     println!("{:?}", city_for_id);
+
     let currencies_for_name = bestchange_api::CurrencyCode::get_by_name(&currencies_codes, "BTC".to_string()).unwrap();
     println!("{:?}", currencies_for_name);
     
-
+    let currencies_for_id208 = bestchange_api::Currency::get_by_id(&currencies, 208_u16).unwrap();
     let currencies_for_id93 = bestchange_api::Currency::get_by_id(&currencies, currencies_for_name.id).unwrap();
-    let currencies_for_id93 = bestchange_api::Currency::get_by_id(&currencies, 93_u16).unwrap();
-
+    println!("{:?}\n{:?}", currencies_for_id208, currencies_for_id93);
 
     let rates_from_id = bestchange_api::Rate::get(&rates, 208_u16, 93_u16);
     
