@@ -1,7 +1,7 @@
 [package]
 name = "bestchange_api"
 license = "MIT"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 description = "Library for convenient use of the bestchange api."
 keywords = ["api", "bestchange"]

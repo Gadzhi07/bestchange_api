@@ -201,11 +201,11 @@ pub struct Currency {
 /// ```
 /// bestchange_api::init();
 /// let currencies = bestchange_api::Currency::load();
-/// let currencies_for_id208 = bestchange_api::Currency::get_by_id(&currencies, 93_u16).unwrap();
-/// println!("{:?}", currencies_for_id208);
+/// let currencies_for_id93 = bestchange_api::Currency::get_by_id(&currencies, 93_u16).unwrap();
+/// println!("{:?}", currencies_for_id93);
 /// ```
 
-impl Currency{
+impl Currency {
     pub fn load() -> Vec<Currency> {
         let mut currencies: Vec<Currency> = Vec::new();
         let str_currencies = unzip("info.zip", "bm_cy.dat");
@@ -227,4 +227,53 @@ impl Currency{
         return Err(format!("The currency with id {} was not found!", id));
     }
 
+}
+
+#[derive(Debug)]
+pub struct CurrencyCode {
+    pub id: u16,
+    pub name: String,
+}
+
+/// Working with Currencies Codes (bm_cycodes.dat)
+/// 
+/// # Example
+/// 
+/// ```
+/// bestchange_api::init();
+/// let currencies_codes = bestchange_api::CurrencyCode::load();
+/// let currencies_for_name = bestchange_api::CurrencyCode::get_by_name(&currencies_codes, "BTC".to_string()).unwrap();
+/// println!("{:?}", currencies_for_name);
+/// ```
+
+impl CurrencyCode {
+    pub fn load() -> Vec<CurrencyCode> {
+        let mut currencies_codes: Vec<CurrencyCode> = Vec::new();
+        let str_currencies_codes = unzip("info.zip", "bm_cycodes.dat");
+
+        for currency_code in str_currencies_codes.lines() {  
+            let values: Vec<&str> = currency_code.split(";").collect();
+            currencies_codes.push(CurrencyCode {id: values[0].parse().unwrap(), name: values[1].to_string()});
+        }
+        
+        return currencies_codes;
+    }
+
+    pub fn get_by_id(currencies_codes: &Vec<CurrencyCode>, id: u16) -> Result<&CurrencyCode, String> {
+        for currency_code in currencies_codes {
+            if currency_code.id == id {
+                return Ok(currency_code);
+            }
+        }
+        return Err(format!("The currency code with id {} was not found!", id));
+    }
+
+    pub fn get_by_name(currencies_codes: &Vec<CurrencyCode>, name: String) -> Result<&CurrencyCode, String> {
+        for currency_code in currencies_codes {
+            if currency_code.name == name {
+                return Ok(currency_code);
+            }
+        }
+        return Err(format!("The currency code with name {} was not found!", name));
+    }
 }
