@@ -1,13 +1,14 @@
 [package]
 name = "bestchange_api"
 license = "MIT"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 description = "Library for convenient use of the bestchange api."
 keywords = ["api", "bestchange"]
 authors = ["Gadzhi07"]
 readme = "README.md"
 repository = "https://github.com/Gadzhi07/bestchange_api"
+documentation = "https://docs.rs/bestchange_api"
 
 [lib]
 name = "bestchange_api"

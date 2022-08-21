@@ -26,6 +26,7 @@ fn main() {
             println!("{:?}", rate);
             let exchange_for_id = bestchange_api::Exchanger::get_by_id(&exchangers, rate.exchange_id).unwrap();
             println!("{:?}", exchange_for_id);
+            println!("{}", exchange_for_id.get_link());
         }
     }
 }

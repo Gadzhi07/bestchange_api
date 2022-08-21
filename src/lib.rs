@@ -160,6 +160,7 @@ pub struct Exchanger {
 /// let exchangers = bestchange_api::Exchanger::load();
 /// let exchange_for_id = bestchange_api::Exchanger::get_by_id(&exchangers, 1_u16).unwrap();
 /// println!("{:?}", exchange_for_id);
+/// println!("{}", exchange_for_id.get_link());
 /// ```
 
 
@@ -183,6 +184,10 @@ impl Exchanger {
             }
         }
         return Err(format!("The exchanger with id {} was not found!", id));
+    }
+
+    pub fn get_link(&self) -> String {
+        return format!("https://www.bestchange.ru/click.php?id={}", self.id);
     }
 
 }

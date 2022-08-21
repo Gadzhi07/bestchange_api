@@ -7,7 +7,7 @@ Library for convenient use of the bestchange api.
 Add the following line to your Cargo.toml file:
 
 ```
-bestchange_api = "0.0.2"
+bestchange_api = "0.0.3"
 ```
 
 ## Example
@@ -41,6 +41,7 @@ fn main() {
             println!("{:?}", rate);
             let exchange_for_id = bestchange_api::Exchanger::get_by_id(&exchangers, rate.exchange_id).unwrap();
             println!("{:?}", exchange_for_id);
+            println!("{}", exchange_for_id.get_link());
         }
     }
 }
